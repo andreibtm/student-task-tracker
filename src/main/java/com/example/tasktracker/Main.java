@@ -1,31 +1,35 @@
 package com.example.tasktracker;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         TaskManager taskManager = new TaskManager();
 
-        Task firstTask = new Task(
-                "Learn Java classes",
-                "Programming III",
-                1
-        );
+        System.out.print("Enter the task title: ");
+        String title = scanner.nextLine();
 
-        Task secondTask = new Task(
-                "Review probability notes",
-                "Probability and Statistics",
-                2
-        );
+        System.out.print("Enter the course: ");
+        String course = scanner.nextLine();
 
-        secondTask.complete();
+        System.out.print("Enter the priority as a number: ");
+        String priorityText = scanner.nextLine();
+        int priority = Integer.parseInt(priorityText);
 
-        taskManager.addTask(firstTask);
-        taskManager.addTask(secondTask);
+        Task task = new Task(title, course, priority);
 
+        taskManager.addTask(task);
+
+        System.out.println();
+        System.out.println("Task created:");
         taskManager.displayAllTasks();
 
         System.out.println(
                 "Total tasks: " + taskManager.getTaskCount()
         );
+
+        scanner.close();
     }
 }
