@@ -1,14 +1,12 @@
 package com.example.tasktracker;
 
-import java.util.ArrayList;
-
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<Task> tasks = new ArrayList<>();
+        TaskManager taskManager = new TaskManager();
 
         Task firstTask = new Task(
-                "Learn Java collections",
+                "Learn Java classes",
                 "Programming III",
                 1
         );
@@ -19,28 +17,15 @@ public class Main {
                 2
         );
 
-        Task thirdTask = new Task(
-                "Install Linux tools",
-                "Operating Systems",
-                3
-        );
-
-        Task fourthTask = new Task(
-                "Learn Java loops",
-                "Programming III",
-                1
-        );
-
-        tasks.add(firstTask);
-        tasks.add(secondTask);
-        tasks.add(thirdTask);
-        tasks.add(fourthTask);
-
         secondTask.complete();
 
-        for (Task task : tasks) {
-            task.display();
-            System.out.println();
-        }
+        taskManager.addTask(firstTask);
+        taskManager.addTask(secondTask);
+
+        taskManager.displayAllTasks();
+
+        System.out.println(
+                "Total tasks: " + taskManager.getTaskCount()
+        );
     }
 }
