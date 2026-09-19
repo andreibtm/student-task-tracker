@@ -14,6 +14,10 @@ public class Task {
         this.completed = false;
     }
 
+    public void complete() {
+        completed = true;
+    }
+
     public void display() {
         System.out.println("Task: " + title);
         System.out.println("Course: " + course);
