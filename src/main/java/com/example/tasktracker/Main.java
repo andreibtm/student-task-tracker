@@ -8,27 +8,51 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         TaskManager taskManager = new TaskManager();
 
-        System.out.print("Enter the task title: ");
-        String title = scanner.nextLine();
+        boolean running = true;
 
-        System.out.print("Enter the course: ");
-        String course = scanner.nextLine();
+        while (running) {
+            System.out.println("=== Student Task Tracker ===");
+            System.out.println("1. Add a task");
+            System.out.println("2. View all tasks");
+            System.out.println("3. Exit");
+            System.out.print("Choose an option: ");
 
-        System.out.print("Enter the priority as a number: ");
-        String priorityText = scanner.nextLine();
-        int priority = Integer.parseInt(priorityText);
+            String choice = scanner.nextLine();
 
-        Task task = new Task(title, course, priority);
+            switch (choice) {
+                case "1":
+                    System.out.print("Enter the task title: ");
+                    String title = scanner.nextLine();
 
-        taskManager.addTask(task);
+                    System.out.print("Enter the course: ");
+                    String course = scanner.nextLine();
 
-        System.out.println();
-        System.out.println("Task created:");
-        taskManager.displayAllTasks();
+                    System.out.print("Enter the priority: ");
+                    int priority = Integer.parseInt(scanner.nextLine());
 
-        System.out.println(
-                "Total tasks: " + taskManager.getTaskCount()
-        );
+                    Task task = new Task(title, course, priority);
+                    taskManager.addTask(task);
+
+                    System.out.println("Task added.");
+                    System.out.println();
+                    break;
+
+                case "2":
+                    System.out.println();
+                    System.out.println("Your tasks:");
+                    taskManager.displayAllTasks();
+                    break;
+
+                case "3":
+                    running = false;
+                    System.out.println("Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("That is not a valid option.");
+                    System.out.println();
+            }
+        }
 
         scanner.close();
     }

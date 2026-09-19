@@ -15,6 +15,12 @@ public class TaskManager {
     }
 
     public void displayAllTasks() {
+        if (tasks.isEmpty()) {
+            System.out.println("You do not have any tasks.");
+            System.out.println();
+            return;
+        }
+
         for (Task task : tasks) {
             task.display();
             System.out.println();
