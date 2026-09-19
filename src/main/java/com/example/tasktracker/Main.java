@@ -3,14 +3,22 @@ package com.example.tasktracker;
 public class Main {
 
     public static void main(String[] args) {
-        String title = "Complete Java exercise";
-        String course = "Programming III";
-        int priority = 1;
-        boolean completed = false;
+        Task firstTask = new Task(
+                "Complete Java exercise",
+                "Programming III",
+                1
+        );
 
-        System.out.println("Task: " + title);
-        System.out.println("Course: " + course);
-        System.out.println("Priority: " + priority);
-        System.out.println("Completed: " + completed);
+        Task secondTask = new Task(
+                "Review probability notes",
+                "Probability and Statistics",
+                2
+        );
+
+        firstTask.display();
+
+        System.out.println();
+
+        secondTask.display();
     }
 }
