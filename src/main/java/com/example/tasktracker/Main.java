@@ -27,8 +27,23 @@ public class Main {
                     System.out.print("Enter the course: ");
                     String course = scanner.nextLine();
 
-                    System.out.print("Enter the priority: ");
-                    int priority = Integer.parseInt(scanner.nextLine());
+                    System.out.print("Enter the priority from 1 to 3: ");
+
+                    int priority;
+
+                    try {
+                        priority = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException exception) {
+                        System.out.println("Priority must be a number.");
+                        System.out.println();
+                        break;
+                    }
+
+                    if (priority < 1 || priority > 3) {
+                        System.out.println("Priority must be between 1 and 3.");
+                        System.out.println();
+                        break;
+                    }
 
                     Task task = new Task(title, course, priority);
                     taskManager.addTask(task);
